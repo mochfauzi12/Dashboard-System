@@ -1,5 +1,5 @@
 @extends('layout')
 @section('title') Home @endsection
 @section('contents')
-    <h1>This  Home page </h1>
+    <button class="btn btn-primary m-5">Test</button>
 @endsection
