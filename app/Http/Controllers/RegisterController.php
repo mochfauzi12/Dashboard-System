@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
+
+    function __construct()
+    {
+        $this->middleware('guest');
+    }
     function index() {
         return view('auth.register');
     }
@@ -17,7 +22,7 @@ class RegisterController extends Controller
     function store(Request $request) {
         $request->validate([
             'name' => ['required'],
-            'email'=> ['email','required'],
+            'email'=> ['email','required','unique:users'],
             'password'=> ['required','min:6','confirmed'],
         ]);
 
