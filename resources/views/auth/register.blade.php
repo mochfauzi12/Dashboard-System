@@ -2,8 +2,12 @@
 @section('title') Register @endsection
 @section('contents')
 
+@if(session()->has('msg'))
+<div class="alert alert-primary text-center">{{ session('msg') }}</div>
+
+@endif
 <div class="signup-form">
-    <form action="/examples/actions/confirmation.php" method="post">
+    <form action="{{ route('register') }}" method="post">
 		<h2>Sign Up</h2>
 		<p>Please fill in this form to create an account!</p>
 		<hr>
@@ -26,9 +30,9 @@
             <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required="required">
         </div>   
       
-        <div class="form-group">
+        {{-- <div class="form-group">
 			<label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
-		</div>
+		</div> --}}
         
 		<div class="form-group">
             <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
