@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title') Register @endsection
+@section('title') Login @endsection
 @section('contents')
 
 @if(session()->has('msg'))
