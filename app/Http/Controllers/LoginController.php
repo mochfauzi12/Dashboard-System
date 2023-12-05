@@ -14,29 +14,26 @@ class LoginController extends Controller
         $this->middleware('guest');
     }
     function index() {
-        return view('auth.register');
+        return view('auth.login');
     }
 
 
     function store(Request $request) {
         $request->validate([
-            'name' => ['required'],
-            'email'=> ['email','required','unique:users'],
-            'password'=> ['required','min:6','confirmed'],
+
+            'email'=> ['email','required'],
+            'password'=> ['required','min:6'],
         ]);
 
         try {
-            User::create([
-                'name'=> $request->input('name'),
-                'email'=> $request->input('email'),
-                'password'=> Hash::make($request->password)
-            ]);
+
 
             Auth::attempt($request->only(['email','password']));
-            return redirect()->route('home')->with('msg','user has been registered');
+            $request->session()->regenerate();
+            return redirect()->route('home');
 
         }catch(\Exception $e){
-            return redirect()->back()->with('msg', 'user not registerd');
+            return redirect()->back()->with('msg', 'Problem With Login');
         }
     }
 }

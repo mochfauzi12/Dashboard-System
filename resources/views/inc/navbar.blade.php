@@ -14,10 +14,10 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link text-white" href="#">Login</a>
+          <a class="nav-link text-white" href="{{route('login')}}">Login</a>
         </li>
 
-        
+
         <li class="nav-item">
           <a class="nav-link text-white">Logout</a>
         </li>
